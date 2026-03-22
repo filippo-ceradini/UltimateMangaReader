@@ -50,6 +50,9 @@ jobs:
         run: |
           wget -nv https://download.qt.io/archive/qt/5.15/5.15.2/single/qt-everywhere-src-5.15.2.tar.xz
           tar -xf qt-everywhere-src-*.tar.xz
+          # Patch for GCC 12+ compatibility (QTBUG-95395): missing #include <limits>
+          sed -i '1i#include <limits>' qt-everywhere-src-5.15.2/qtbase/src/corelib/global/qfloat16.h
+          sed -i '1i#include <limits>' qt-everywhere-src-5.15.2/qtbase/src/corelib/global/qendian.h
           mkdir -p qt-everywhere-src-5.15.2/qtbase/mkspecs/linux-kobo-gnueabihf-g++
           wget https://github.com/mtlive/UltimateMangaReader/raw/master/qmake.conf -O qt-everywhere-src-5.15.2/qtbase/mkspecs/linux-kobo-gnueabihf-g++/qmake.conf
           echo '#include "../linux-g++/qplatformdefs.h"' > qt-everywhere-src-5.15.2/qtbase/mkspecs/linux-kobo-gnueabihf-g++/qplatformdefs.h
