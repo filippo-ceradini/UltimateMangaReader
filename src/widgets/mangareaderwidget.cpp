@@ -30,10 +30,7 @@ MangaReaderWidget::MangaReaderWidget(QWidget *parent)
             [this]()
             { ui->horizontalSliderComfLight->setValue(ui->horizontalSliderComfLight->value() - 1); });
 
-#ifdef DESKTOP
     QGestureRecognizer::registerRecognizer(new TapGestureRecognizer());
-#endif
-
     QGestureRecognizer::registerRecognizer(new SwipeGestureRecognizer());
     grabGesture(Qt::GestureType::TapGesture);
     grabGesture(Qt::GestureType::SwipeGesture);

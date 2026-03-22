@@ -9,6 +9,7 @@ int main(int argc, char *argv[])
 
     QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+    QGuiApplication::setAttribute(Qt::AA_SynthesizeMouseForUnhandledTouchEvents, true);
 
     QApplication app(argc, argv);
 
