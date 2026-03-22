@@ -5,7 +5,7 @@ on:
 
 jobs:
   build_toolchain:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
 
@@ -25,7 +25,7 @@ jobs:
           if-no-files-found: error
 
   build_Qt:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     needs: build_toolchain
     steps:
       - name: Download toolchain
