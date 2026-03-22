@@ -48,18 +48,18 @@ jobs:
 
       - name: Qt
         run: |
-          wget -nv https://download.qt.io/archive/qt/5.15/5.15.1/single/qt-everywhere-src-5.15.1.tar.xz
+          wget -nv https://download.qt.io/archive/qt/5.15/5.15.2/single/qt-everywhere-src-5.15.2.tar.xz
           tar -xf qt-everywhere-src-*.tar.xz
-          mkdir -p qt-everywhere-src-5.15.1/qtbase/mkspecs/linux-kobo-gnueabihf-g++
-          wget https://github.com/mtlive/UltimateMangaReader/raw/master/qmake.conf -O qt-everywhere-src-5.15.1/qtbase/mkspecs/linux-kobo-gnueabihf-g++/qmake.conf
-          echo '#include "../linux-g++/qplatformdefs.h"' > qt-everywhere-src-5.15.1/qtbase/mkspecs/linux-kobo-gnueabihf-g++/qplatformdefs.h
+          mkdir -p qt-everywhere-src-5.15.2/qtbase/mkspecs/linux-kobo-gnueabihf-g++
+          wget https://github.com/mtlive/UltimateMangaReader/raw/master/qmake.conf -O qt-everywhere-src-5.15.2/qtbase/mkspecs/linux-kobo-gnueabihf-g++/qmake.conf
+          echo '#include "../linux-g++/qplatformdefs.h"' > qt-everywhere-src-5.15.2/qtbase/mkspecs/linux-kobo-gnueabihf-g++/qplatformdefs.h
           export PATH=~/x-tools/arm-kobo-linux-gnueabihf/bin:$PATH
-          export QTDIR=$PWD/qt-everywhere-src-5.15.1 && export PATH=$PWD/qt-everywhere-src-5.15.1/qtbase/bin:$PATH
+          export QTDIR=$PWD/qt-everywhere-src-5.15.2 && export PATH=$PWD/qt-everywhere-src-5.15.2/qtbase/bin:$PATH
           export SYSROOT=~/x-tools/arm-kobo-linux-gnueabihf/arm-kobo-linux-gnueabihf/sysroot
           cd qt-everywhere-src-*/
           ./configure --recheck-all -opensource -confirm-license -release \
-           -prefix /mnt/onboard/.adds/qt-linux-5.15.1-kobo \
-           -extprefix /home/${USER}/qt-bin/qt-linux-5.15.1-kobo \
+           -prefix /mnt/onboard/.adds/qt-linux-5.15.2-kobo \
+           -extprefix /home/${USER}/qt-bin/qt-linux-5.15.2-kobo \
            -xplatform linux-kobo-gnueabihf-g++ \
            -sysroot ${SYSROOT} \
            -openssl-linked OPENSSL_PREFIX="${SYSROOT}/usr" \
