@@ -25,7 +25,7 @@ jobs:
           if-no-files-found: error
 
   build_Qt:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-20.04
     needs: build_toolchain
     steps:
       - name: Download toolchain
@@ -56,8 +56,6 @@ jobs:
           export PATH=~/x-tools/arm-kobo-linux-gnueabihf/bin:$PATH
           export QTDIR=$PWD/qt-everywhere-src-5.15.2 && export PATH=$PWD/qt-everywhere-src-5.15.2/qtbase/bin:$PATH
           export SYSROOT=~/x-tools/arm-kobo-linux-gnueabihf/arm-kobo-linux-gnueabihf/sysroot
-          # Force #include <limits> in all TUs to fix QTBUG-95395 with GCC 11+
-          export CXXFLAGS="-include limits"
           cd qt-everywhere-src-*/
           ./configure --recheck-all -opensource -confirm-license -release \
            -prefix /mnt/onboard/.adds/qt-linux-5.15.2-kobo \
